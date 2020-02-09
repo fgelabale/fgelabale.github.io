@@ -1,0 +1,176 @@
+
+#wrap { /* Centrage la page */
+	width: 960px;
+	margin: auto;
+}
+
+header {
+	background-color: lightgreen;
+	width: 100%;
+	height: 250px;
+
+	/* pour que le texte soit plus bas dans le header*/
+	padding-top: 3em;    
+	text-align: center;
+}
+
+/* pour que nos border et padding soient inclus dans le width et height des boites*/ 
+* {
+	box-sizing: border-box; 
+}
+
+body {
+	background-color: grey;
+	font-family: calibri;
+}
+
+nav {
+	/* sert seulemnt de visuel pour construire et expliquer, on aurait pu le mettre sous nav ul {}) */
+	background-color: lightgrey; 
+	height: 3em;
+}
+
+nav ul {   
+	/* enleve l'espace entre le head et le nav */
+	margin: 0;
+	padding: 0;
+	
+	text-align: center;
+}
+
+nav ul li {
+	background-color: dimgray;
+	
+	/* Mettre les li sur l'horozontale*/
+	display: inline-block;
+	width: 20%;
+	
+	/* Centre le texte verticalement dans la boite*/
+	line-height: 3em;
+}
+
+nav ul li:hover {
+	background-color: darkslategrey;
+}
+
+nav ul li a {
+	color: white;
+	text-decoration: none;
+}
+
+/* ============================================== */
+#main {
+	background-color: cornflowerblue;
+	height: 1000px;
+	width: 100%;
+	
+	/*En passant, si on met width:100% a un element enfant*/
+	/* le 100% est la distance disponible a l'intérieur des paddings du parent*/
+	padding: 2%;
+	
+	/*HACK pour enlever le petit espace apres les inline blocks*/
+	/* il faut re specifierfont-size sur chaque element enfant à cause de ceci (voir section {}) */
+	font-size: 0;
+}
+
+section {
+	background-color: aliceblue;
+	
+	/*On doit specifier le font-size parce que le main le set a 0 (Voir hack main)*/ 
+	font-size: 1rem;
+	
+	padding: 1em;
+	overflow: hidden;
+}
+
+.section1 {
+	/* Colonne gauche, on active inline block pour permettre a la colonne droite */
+	/* d'aller a droite*/
+	display: inline-block;
+	
+	/* Pourcentage du width du parent a l'interieur de son padding*/ 
+	width: 49%;
+	
+	/* Aggrandi la boite par rapport au parent*/
+	height: 100%;
+	
+	/* Sans cela les deux colonnes s'enlignent a partir du bas */
+	vertical-align:top;
+
+	/* petit fix pour ajuster avec l'espace trop grand à gauche */
+	/* à été ajouté en tout dernier pour centrer le tout*/
+	margin-left: 3px;
+}
+
+.stack {
+	/*mettre le deuxieme bloc à droite!*/
+	display: inline-block;
+	width: 49%;
+	height: 100%;
+	
+	/* Sans cela, stack et section1 s'alignent a partir du bas */
+	vertical-align:top;
+
+	/* espace entre les 2 colonnes */
+	margin-left: 1.65%;
+
+
+}
+
+.section2, .section3 {
+	/* Aggrandi les boites par rapport au parent*/
+	height: 49%;
+}
+
+.section2 {
+	/*https://www.hongkiat.com/blog/calculate-css-percentage-margins*/
+	/*le pourcentage est basé sur le WIDTH du parent :(  */
+	/* C'est pourquoi ici on doit mettre 4% au lieu de ce qui ferait du sens :2%*/ 
+	margin-bottom: 4%;
+}
+
+main h2{
+	margin:0;
+}
+
+footer {
+	background-color:  darkslateblue;
+	text-align: center;
+	padding-top : 2em;
+	
+	/* Temporaire le temps qu'on ajoute du contenu */ 
+	height: 128px;
+	
+}
+
+
+/* ===================================================================== */
+@media screen and (max-width: 800px) {
+	#wrap {
+		width: inherit;
+	}
+	
+	body {
+		background-color: black;
+	}
+
+	main {
+		height: inherit;
+	}
+	
+	.stack,
+	.section1,
+	.section2,
+	.section3 {
+		width: 100%;
+	}
+	
+	.stack {
+		/* On désactive inline-blocks */
+		/* tout s'enligne donc un en dessous de l'autre*/
+		display: block;
+		margin: 0;
+		margin-top: 2%;
+	}
+	
+}
